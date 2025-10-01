@@ -1,0 +1,20 @@
+<button onclick="getDirections()">Get Directions</button>
+
+<script>
+  // Set destination coordinates as variables
+  var destinationLat = 37.7565566;
+  var destinationLng = -121.4642229;
+
+  function getDirections() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        var url = "https://www.google.com/maps/dir/?api=1&origin=" + lat + "," + lng + "&destination=" + destinationLat + "," + destinationLng;
+        window.open(url, "_blank");
+      });
+    } else {
+      alert("Geolocation not supported by this browser.");
+    }
+  }
+</script>
